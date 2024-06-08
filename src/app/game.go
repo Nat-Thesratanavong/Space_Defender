@@ -2,6 +2,7 @@ package main
 
 import (
 	"image/color"
+	"strconv"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
@@ -14,21 +15,6 @@ const (
 	playerHeight int = 10
 	playerSpeed  int = 5
 )
-
-var (
-// score              = "SCORE\n" + strconv.Itoa(player1.score)
-// firaSansRegular    []byte
-// firaSansFaceSource *text.GoTextFaceSource
-// op                 = &text.DrawOptions{}
-)
-
-// func init() {
-// 	s, err := text.NewGoTextFaceSource(bytes.NewReader(firaSansRegular))
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-// 	firaSansFaceSource = s
-// }
 
 type Game struct {
 }
@@ -47,6 +33,7 @@ func (g *Game) Update() error {
 	}
 	player1.Update()
 	bullet1.Update()
+
 	return nil
 }
 
@@ -55,11 +42,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	screen.Fill(color.RGBA{0, 0, 0, 0xff})
 	player1.Draw(screen)
 	bullet1.Draw(screen)
+	score := "SCORE\n" + strconv.Itoa(player1.score)
+	drawTextWithShadow(screen, score, 540, 100, 1, color.White)
 
-	// op.GeoM.Translate(20, 20)
-	// op.LineSpacing = 30
-	// text.Draw(screen, score, &text.GoTextFace{
-	// 	Source: firaSansFaceSource,
-	// 	Size:   20,
-	// }, op)
 }
