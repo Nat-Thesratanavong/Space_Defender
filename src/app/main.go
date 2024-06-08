@@ -20,7 +20,6 @@ const (
 
 var (
 // fontSize        int = 32
-// mplusNormalFont font.Face
 
 // bkg    = color.Black
 // white = color.White

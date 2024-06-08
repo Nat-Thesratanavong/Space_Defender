@@ -12,19 +12,19 @@ type Player struct {
 	x        int
 	y        int
 	score    int
+	HP       int
 	leftKey  ebiten.Key
 	rightKey ebiten.Key
 }
 
-var (
-	player1 = &Player{
-		x:        screenWidth / 2,
-		y:        screenHeight / 2,
-		score:    0,
-		leftKey:  ebiten.KeyA,
-		rightKey: ebiten.KeyD,
-	}
-)
+var player1 = &Player{
+	x:        screenWidth / 2,
+	y:        screenHeight/2 + 200,
+	score:    0,
+	HP:       100,
+	leftKey:  ebiten.KeyA,
+	rightKey: ebiten.KeyD,
+}
 
 func (p *Player) Update() {
 	if ebiten.IsKeyPressed(p.leftKey) && p.x > 5 {
@@ -36,5 +36,5 @@ func (p *Player) Update() {
 }
 
 func (p *Player) Draw(screen *ebiten.Image) {
-	vector.DrawFilledRect(screen, float32(player1.x)-5, float32(player1.y)-2.5, float32(10), float32(5), color.White, true)
+	vector.DrawFilledRect(screen, float32(player1.x)-10.0, float32(player1.y)-2.5, float32(20), float32(7), color.White, true)
 }
